@@ -32,11 +32,15 @@ END:VCARD`;
 });
 
 // GENERAR QR
+
 const urlTarjeta = "https://carlosqb.github.io/tarjeta-digital/";
 
 const qrContainer = document.getElementById("qrcode");
 
-if (qrContainer) {
+console.log("QRCode:", typeof QRCode);
+console.log("QR Container:", qrContainer);
+
+if (qrContainer && typeof QRCode !== "undefined") {
 
     new QRCode(qrContainer, {
         text: urlTarjeta,
