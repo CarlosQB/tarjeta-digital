@@ -135,3 +135,17 @@ button,
     color:#7d8796;
     font-size:12px;
 }
+#qrcode{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:15px;
+    width:100%;
+    min-height:180px;
+}
+
+#qrcode img,
+#qrcode canvas{
+    max-width:100%;
+    height:auto;
+}

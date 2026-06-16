@@ -1,3 +1,60 @@
+// DATOS DEL CONTACTO
+const contacto = {
+    nombre: "Jose Carlos Quezada",
+    telefono: "3327207997",
+    correo: "quezadacarlos246@gmail.com"
+};
+
+// DESCARGAR CONTACTO
+document.getElementById("guardarContacto").addEventListener("click", () => {
+
+    const vCard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:${contacto.nombre}
+TEL:${contacto.telefono}
+EMAIL:${contacto.correo}
+END:VCARD`;
+
+    const blob = new Blob([vCard], {
+        type: "text/vcard"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "JoseCarlosQuezada.vcf";
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+});
+
+// GENERAR QR
+const urlTarjeta = "https://carlosqb.github.io/tarjeta-digital/";
+
+const qrContainer = document.getElementById("qrcode");
+
+if (qrContainer) {
+
+    new QRCode(qrContainer, {
+        text: urlTarjeta,
+        width: 180,
+        height: 180
+    });
+
+}
+
+// SERVICE WORKER
+if ('serviceWorker' in navigator) {
+
+    navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log("Service Worker registrado"))
+        .catch(error => console.error(error));
+
+}
+
 // INSTALAR APP
 let deferredPrompt;
 
