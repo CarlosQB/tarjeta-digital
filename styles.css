@@ -97,6 +97,9 @@ button,
     text-decoration:none;
     display:block;
 }
+#instalarApp{
+    background:#7c3aed;
+}
 
 #guardarContacto{
     background:#2454ff;
