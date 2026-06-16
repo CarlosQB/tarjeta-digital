@@ -1,0 +1,129 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#020817;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:380px;
+    background:#09111f;
+    border:1px solid #1c2940;
+    border-radius:20px;
+    padding:30px;
+    color:white;
+    text-align:center;
+}
+
+.avatar-container{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:3px solid #d4af37;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:42px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+h1{
+    font-size:28px;
+}
+
+h2{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-top:5px;
+}
+
+hr{
+    margin:25px 0;
+    border:none;
+    border-top:1px solid #1d2a41;
+}
+
+.info-box{
+    background:#050b16;
+    border:1px solid #18253d;
+    border-radius:15px;
+    padding:15px;
+    margin-bottom:15px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+    text-align:left;
+}
+
+.info-box span{
+    font-size:22px;
+}
+
+.info-box small{
+    color:#8f9db3;
+}
+
+.info-box p{
+    font-weight:bold;
+}
+
+button,
+.btn{
+    width:100%;
+    border:none;
+    border-radius:15px;
+    padding:15px;
+    margin-top:12px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    text-decoration:none;
+    display:block;
+}
+
+#guardarContacto{
+    background:#2454ff;
+}
+
+.whatsapp{
+    background:#18b44c;
+}
+
+.correo{
+    background:#e02424;
+}
+
+.qr-title{
+    margin-bottom:15px;
+    color:#98a5ba;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+#qrcode{
+    display:flex;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.qr-text{
+    color:#7d8796;
+    font-size:12px;
+}
