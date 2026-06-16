@@ -110,3 +110,21 @@ window.addEventListener('appinstalled', () => {
     }
 
 });
+const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+if (esIOS) {
+    document.getElementById("iosInstall").style.display = "block";
+
+    document.getElementById("iosInstall").addEventListener("click", () => {
+
+        alert(
+`Para instalar:
+
+1. Presiona el botón Compartir (□↗)
+2. Selecciona "Añadir a pantalla de inicio"
+3. Presiona "Añadir"`
+
+        );
+
+    });
+}
