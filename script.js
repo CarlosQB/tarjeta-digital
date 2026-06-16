@@ -1,62 +1,19 @@
-// DATOS DEL CONTACTO
-const contacto = {
-    nombre: "Jose Carlos Quezada",
-    telefono: "3327207997",
-    correo: "quezadacarlos246@gmail.com"
-};
-
-console.log("Script cargado");
-
-// DESCARGAR CONTACTO
-document.getElementById("guardarContacto").addEventListener("click", () => {
-
-    const vCard =
-`BEGIN:VCARD
-VERSION:3.0
-FN:${contacto.nombre}
-TEL:${contacto.telefono}
-EMAIL:${contacto.correo}
-END:VCARD`;
-
-    const blob = new Blob([vCard], {
-        type: "text/vcard"
-    });
-
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "JoseCarlosQuezada.vcf";
-    a.click();
-
-    URL.revokeObjectURL(url);
-});
-
-// QR
-const urlTarjeta = "https://carlosqb.github.io/tarjeta-digital/";
-
-new QRCode(document.getElementById("qrcode"), {
-    text: urlTarjeta,
-    width: 200,
-    height: 200
-});
-
-// SERVICE WORKER
-if ('serviceWorker' in navigator) {
-
-    navigator.serviceWorker.register('./service-worker.js')
-        .then(() => {
-            console.log("Service Worker registrado");
-        })
-        .catch((error) => {
-            console.error("Error registrando Service Worker:", error);
-        });
-
-}
-
 // INSTALAR APP
 let deferredPrompt;
 
+const btnInstalar = document.getElementById("instalarApp");
+const btnIOS = document.getElementById("iosInstall");
+
+// Mostrar ambos botones siempre
+if (btnInstalar) {
+    btnInstalar.style.display = "block";
+}
+
+if (btnIOS) {
+    btnIOS.style.display = "block";
+}
+
+// Detectar si Chrome permite instalación
 window.addEventListener('beforeinstallprompt', (e) => {
 
     console.log("Instalable detectado");
@@ -65,36 +22,58 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
     deferredPrompt = e;
 
-    const btnInstalar = document.getElementById("instalarApp");
-
-    if (btnInstalar) {
-        btnInstalar.style.display = "block";
-    }
-
 });
 
-const btnInstalar = document.getElementById("instalarApp");
-
+// Botón Android / Chrome
 if (btnInstalar) {
 
     btnInstalar.addEventListener("click", async () => {
 
         console.log("Botón instalar presionado");
 
-        if (!deferredPrompt) {
-            alert("La instalación aún no está disponible en este dispositivo.");
-            return;
+        // Si Chrome permite instalar
+        if (deferredPrompt) {
+
+            deferredPrompt.prompt();
+
+            const resultado = await deferredPrompt.userChoice;
+
+            console.log("Resultado:", resultado);
+
+            deferredPrompt = null;
+
+        } else {
+
+            alert(
+`Android:
+
+1. Presiona ⋮ arriba a la derecha
+2. Selecciona "Instalar aplicación"
+
+iPhone:
+
+1. Presiona Compartir (□↗)
+2. Añadir a pantalla de inicio`
+            );
+
         }
 
-        deferredPrompt.prompt();
+    });
 
-        const resultado = await deferredPrompt.userChoice;
+}
 
-        console.log("Resultado:", resultado);
+// Botón iPhone
+if (btnIOS) {
 
-        deferredPrompt = null;
+    btnIOS.addEventListener("click", () => {
 
-        btnInstalar.style.display = "none";
+        alert(
+`Para instalar en iPhone:
+
+1. Presiona Compartir (□↗)
+2. Selecciona "Añadir a pantalla de inicio"
+3. Presiona "Añadir"`
+        );
 
     });
 
@@ -110,21 +89,3 @@ window.addEventListener('appinstalled', () => {
     }
 
 });
-const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-
-if (esIOS) {
-    document.getElementById("iosInstall").style.display = "block";
-
-    document.getElementById("iosInstall").addEventListener("click", () => {
-
-        alert(
-`Para instalar:
-
-1. Presiona el botón Compartir (□↗)
-2. Selecciona "Añadir a pantalla de inicio"
-3. Presiona "Añadir"`
-
-        );
-
-    });
-}

@@ -99,6 +99,11 @@ button,
 }
 #instalarApp{
     background:#7c3aed;
+
+}
+.instalar{
+    background:#111827;
+    border:1px solid #374151;
 }
 
 #guardarContacto{
