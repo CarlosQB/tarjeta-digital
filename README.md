@@ -35,7 +35,7 @@ Abrir el archivo `index.html` en cualquier navegador web.
 
 ## Vista previa
 
-Agregar aquí una captura de pantalla del proyecto.
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/912b0e4b-e9d4-4f69-aa9d-f3df04f1c4f7" />
 
 ## Demo
 
