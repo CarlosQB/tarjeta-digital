@@ -1,4 +1,4 @@
-#Tarjeta de Presentación Digital
+# Tarjeta de Presentación Digital
 
 Aplicación web desarrollada con HTML, CSS y JavaScript para compartir información de contacto de forma rápida y accesible. El proyecto permite descargar un contacto en formato vCard, generar un código QR para compartir la tarjeta e instalar la aplicación en dispositivos compatibles.
 
