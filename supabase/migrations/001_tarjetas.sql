@@ -64,6 +64,14 @@ alter table public.profiles enable row level security;
 alter table public.links enable row level security;
 alter table public.events enable row level security;
 
+-- Permisos de la API. Se dan explícitos para que funcione aunque el proyecto
+-- tenga apagado "Automatically expose new tables". RLS decide qué filas.
+grant usage on schema public to anon, authenticated;
+grant select on public.profiles, public.links to anon, authenticated;
+grant update on public.profiles to authenticated;
+grant insert, update, delete on public.links to authenticated;
+grant select on public.events to authenticated;
+
 -- Cualquiera puede ver tarjetas; cada quien edita solo la suya.
 create policy "perfiles visibles" on public.profiles for select using (true);
 create policy "editar mi perfil" on public.profiles for update
