@@ -1,87 +1,23 @@
 <!DOCTYPE html>
+<!--
+  Solo para GitHub Pages (carlosqb.github.io/tarjeta-digital).
+  Los QR viejos apuntan aquí. Cuando la app esté en Vercel, cambia DESTINO
+  por tu tarjeta nueva, por ejemplo "https://tu-app.vercel.app/carlos".
+  Mientras tanto manda a la tarjeta anterior, que vive en /legacy.
+-->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarjeta Digital</title>
-
-<link rel="stylesheet" href="styles.css">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script defer src="script.js"></script>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#09111f">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="JC Card">
-<link rel="apple-touch-icon" href="icono-192.png">
-
+<title>Tarjeta digital</title>
+<meta name="theme-color" content="#070d1a">
+<script>
+  const DESTINO = "legacy/";
+  location.replace(DESTINO);
+</script>
+<style>body{background:#070d1a;color:#eef2fa;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#d9b45a}</style>
 </head>
 <body>
-
-<div class="card">
-
-    <div class="avatar-container">
-        <div class="avatar">JC</div>
-    </div>
-
-    <h1>Jose Carlos Quezada</h1>
-    <h2>DESARROLLADOR WEB</h2>
-
-    <hr>
-
-    <div class="info-box">
-        <span>📞</span>
-        <div>
-            <small>TELÉFONO</small>
-            <p>33 2720 7997</p>
-        </div>
-    </div>
-
-    <div class="info-box">
-        <span>✉️</span>
-        <div>
-            <small>CORREO</small>
-            <p>quezadacarlos246@gmail.com</p>
-        </div>
-    </div>
-
-    <button id="guardarContacto">
-        ⬇ Guardar Contacto
-    </button>
-
-    <a
-        href="https://wa.me/523327207997"
-        target="_blank"
-        class="btn whatsapp">
-        WhatsApp
-    </a>
-    <button id="instalarApp">
-    📱 Instalar aplicación
-    </button>
-
-
-    <a
-        href="mailto:quezadacarlos246@gmail.com"
-        class="btn correo">
-        Enviar correo
-    </a>
-
-    <hr>
-
-    <p class="qr-title">
-        ESCANEA PARA GUARDAR CONTACTO
-    </p>
-
-    <div id="qrcode"></div>
-
-    <p class="qr-text">
-        El QR abre esta misma tarjeta digital.
-    </p>
-
-</div>
-
+<p>Abriendo la tarjeta… <a href="legacy/">Toca aquí si no abre</a></p>
 </body>
-
 </html>
