@@ -2,10 +2,32 @@
 
 App web para crear tu tarjeta de presentación digital. Cada persona se registra, arma su tarjeta y la comparte con un enlace o un QR. Quien la abre puede guardar el contacto en su celular, escribir por WhatsApp, llamar, mandar correo o abrir sus redes.
 
+**Demo:** https://tarjeta-digital-roan.vercel.app
+
+## Antes y después
+
+La primera versión era una sola página con mis datos escritos en el código. La versión 2 es una app con cuentas, base de datos, panel para editar y estadísticas.
+
+| Antes (v1) | Después (v2) |
+| :---: | :---: |
+| <img src="docs/capturas/antes.png" width="260" alt="Versión 1: tarjeta estática con botones de colores"> | <img src="docs/capturas/tarjeta-publica.png" width="260" alt="Versión 2: tarjeta pública con guardar contacto, WhatsApp, llamar, correo y enlaces"> |
+
+## Cómo se ve
+
+| Mi tarjeta | QR en grande | Editar |
+| :---: | :---: | :---: |
+| <img src="docs/capturas/mi-tarjeta.png" width="230" alt="Pantalla principal con la tarjeta, QR y botones de compartir"> | <img src="docs/capturas/qr-grande.png" width="230" alt="QR a pantalla completa para que otra persona lo escanee"> | <img src="docs/capturas/editar.png" width="230" alt="Panel para editar foto, color y datos"> |
+| Lo primero que ves al entrar: tu tarjeta lista para mostrar, compartir o agregar a inicio. | Para enseñarlo de frente y que te guarden con la cámara. | Foto, color, datos, contacto y enlaces, con vista previa. |
+
+| Inicio | Registro |
+| :---: | :---: |
+| <img src="docs/capturas/inicio.png" width="230" alt="Página de inicio"> | <img src="docs/capturas/registro.png" width="230" alt="Registro con nombre de usuario"> |
+
 ## Qué hace
 
 - **Registro e inicio de sesión** con correo y contraseña (incluye "olvidé mi contraseña").
 - **Una tarjeta por usuario** en su propia dirección: `tu-dominio.com/tu-nombre`.
+- **Mi tarjeta** como pantalla principal: QR grande, compartir, agregar a inicio, copiar enlace y descargar el QR.
 - **Panel para editar** desde el celular: foto, nombre, puesto, descripción, ciudad, teléfono, WhatsApp, correo, color de acento y enlaces (agregar, ordenar, ocultar, borrar). Con vista previa.
 - **Guardar contacto (.vcf)** con foto, puesto, ciudad y enlaces incluidos.
 - **QR** para mostrar en pantalla o descargar en PNG para imprimir.
