@@ -11,9 +11,9 @@
   --ok: #25c25a;
   --danger: #f06a6a;
   --r: 18px;
-  --f-display: var(--font-display), "Segoe UI", system-ui, sans-serif;
-  --f-body: var(--font-body), "Segoe UI", system-ui, sans-serif;
-  --f-mono: var(--font-mono), ui-monospace, Menlo, monospace;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
