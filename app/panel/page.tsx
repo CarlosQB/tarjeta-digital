@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
-import { Editor } from "@/components/Editor";
+import { OwnerCard } from "@/components/OwnerCard";
 import { PanelNav } from "@/components/PanelNav";
 import { supabaseServer } from "@/lib/supabase-server";
 import { siteUrl, type CardLink, type Profile } from "@/lib/types";
 
-export const metadata = { title: "Mi panel" };
+export const metadata = { title: "Mi tarjeta" };
 
-export default async function Panel() {
+export default async function MiTarjeta() {
   const supabase = await supabaseServer();
   const {
     data: { user },
@@ -23,9 +23,9 @@ export default async function Panel() {
     .returns<CardLink[]>();
 
   return (
-    <main className="page wide">
-      <PanelNav current="editar" username={profile.username} />
-      <Editor initialProfile={profile} initialLinks={links ?? []} site={siteUrl()} />
+    <main className="page">
+      <PanelNav current="tarjeta" />
+      <OwnerCard profile={profile} links={links ?? []} cardUrl={`${siteUrl()}/${profile.username}`} />
     </main>
   );
 }

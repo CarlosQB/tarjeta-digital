@@ -1,19 +1,19 @@
 import Link from "next/link";
 
-export function PanelNav({ current, username }: { current: "editar" | "estadisticas"; username: string }) {
+type Tab = "tarjeta" | "editar" | "estadisticas";
+
+export function PanelNav({ current }: { current: Tab }) {
   return (
     <>
       <div className="topbar">
-        <Link href="/" className="brand"><i />Tarjeta digital</Link>
-        <div style={{ display: "flex", gap: 8 }}>
-          <Link href={`/${username}`} className="btn small" target="_blank">Ver tarjeta</Link>
-          <form action="/auth/salir" method="post">
-            <button className="btn small ghost">Salir</button>
-          </form>
-        </div>
+        <Link href="/panel" className="brand"><i />Tarjeta digital</Link>
+        <form action="/auth/salir" method="post">
+          <button className="btn small ghost">Salir</button>
+        </form>
       </div>
       <nav className="tabs" aria-label="Panel">
-        <Link href="/panel" aria-current={current === "editar" ? "page" : undefined}>Editar</Link>
+        <Link href="/panel" aria-current={current === "tarjeta" ? "page" : undefined}>Mi tarjeta</Link>
+        <Link href="/panel/editar" aria-current={current === "editar" ? "page" : undefined}>Editar</Link>
         <Link href="/panel/estadisticas" aria-current={current === "estadisticas" ? "page" : undefined}>Estadísticas</Link>
       </nav>
     </>

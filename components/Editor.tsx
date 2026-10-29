@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import { CardView, accentStyle } from "@/components/CardView";
+import { CardView } from "@/components/CardView";
 import { Icon } from "@/components/Icon";
 import { supabaseBrowser } from "@/lib/supabase-browser";
-import { ACCENTS, LINK_ICONS, initials, type CardLink, type LinkIcon, type Profile } from "@/lib/types";
+import { ACCENTS, LINK_ICONS, accentStyle, initials, type CardLink, type LinkIcon, type Profile } from "@/lib/types";
 
 type Props = { initialProfile: Profile; initialLinks: CardLink[]; site: string };
 
@@ -30,7 +29,6 @@ export function Editor({ initialProfile, initialLinks, site }: Props) {
   const [error, setError] = useState("");
   const [toast, setToast] = useState("");
   const [userStatus, setUserStatus] = useState<"same" | "checking" | "free" | "taken" | "invalid">("same");
-  const qrCanvas = useRef<HTMLDivElement>(null);
   const savedUsername = useRef(initialProfile.username);
 
   const cardUrl = `${site}/${savedUsername.current}`;
@@ -171,46 +169,8 @@ export function Editor({ initialProfile, initialLinks, site }: Props) {
     router.refresh();
   }
 
-  function downloadQr() {
-    const canvas = qrCanvas.current?.querySelector("canvas");
-    if (!canvas) return;
-    const a = document.createElement("a");
-    a.href = canvas.toDataURL("image/png");
-    a.download = `qr-${savedUsername.current}.png`;
-    a.click();
-  }
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(cardUrl);
-      flash("Enlace copiado");
-    } catch {
-      flash(cardUrl);
-    }
-  }
-
   return (
     <div className="sec" style={{ ...accentStyle(p.accent), gap: 14 }}>
-      {/* Compartir */}
-      <div className="box">
-        <div className="share-card">
-          <div className="qrbox" style={{ padding: 8, borderRadius: 12 }}>
-            <QRCodeSVG value={`${cardUrl}?qr=1`} size={96} marginSize={0} />
-          </div>
-          <div className="t">
-            <b style={{ fontFamily: "var(--f-display)", fontSize: 18 }}>Tu tarjeta</b>
-            <code className="url" style={{ textAlign: "left" }}>{cardUrl.replace(/^https?:\/\//, "")}</code>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-              <button className="btn small" onClick={copy}>Copiar enlace</button>
-              <button className="btn small" onClick={downloadQr}>Descargar QR</button>
-            </div>
-          </div>
-        </div>
-        <div ref={qrCanvas} hidden>
-          <QRCodeCanvas value={`${cardUrl}?qr=1`} size={1024} marginSize={4} />
-        </div>
-      </div>
-
       <nav className="tabs" aria-label="Modo">
         <a href="#" aria-current={mode === "editar" ? "page" : undefined} onClick={(e) => { e.preventDefault(); setMode("editar"); }}>Editar datos</a>
         <a href="#" aria-current={mode === "vista" ? "page" : undefined} onClick={(e) => { e.preventDefault(); setMode("vista"); }}>Vista previa</a>

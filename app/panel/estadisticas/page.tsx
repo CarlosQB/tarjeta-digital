@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { PanelNav } from "@/components/PanelNav";
-import { accentStyle } from "@/components/CardView";
 import { supabaseServer } from "@/lib/supabase-server";
-import type { CardLink, Profile } from "@/lib/types";
+import { accentStyle, type CardLink, type Profile } from "@/lib/types";
 
 export const metadata = { title: "Estadísticas" };
 
@@ -76,7 +75,7 @@ export default async function Estadisticas({ searchParams }: { searchParams: Pro
 
   return (
     <main className="page wide" style={accentStyle(profile.accent)}>
-      <PanelNav current="estadisticas" username={profile.username} />
+      <PanelNav current="estadisticas" />
 
       <div className="range" role="group" aria-label="Periodo">
         <Link href="/panel/estadisticas" aria-current={days === 7}>7 días</Link>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Icon } from "@/components/Icon";
-import { ACCENTS, initials, waNumber, type CardLink, type EventKind, type Profile } from "@/lib/types";
+import { accentStyle, initials, waNumber, type CardLink, type EventKind, type Profile } from "@/lib/types";
 import { supabaseBrowser } from "@/lib/supabase-browser";
 
 type Props = {
@@ -13,11 +13,6 @@ type Props = {
   /** En el panel se muestra como vista previa: no cuenta visitas. */
   preview?: boolean;
 };
-
-export function accentStyle(accent: Profile["accent"]) {
-  const color = ACCENTS.find((a) => a.id === accent)?.color ?? ACCENTS[0]!.color;
-  return { "--accent": color } as React.CSSProperties;
-}
 
 export function CardView({ profile, links, cardUrl, preview = false }: Props) {
   const [sheet, setSheet] = useState(false);

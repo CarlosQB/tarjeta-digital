@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export type Accent = "oro" | "esmeralda" | "coral" | "cielo" | "lila";
 
 export type Profile = {
@@ -76,4 +78,9 @@ export function waNumber(raw: string) {
 
 export function siteUrl() {
   return (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+}
+
+export function accentStyle(accent: Accent) {
+  const color = ACCENTS.find((a) => a.id === accent)?.color ?? ACCENTS[0]!.color;
+  return { "--accent": color } as CSSProperties;
 }
